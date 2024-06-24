@@ -1,0 +1,282 @@
+<!DOCTYPE may html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkup</title>
+    <link rel="icon" type="img" may href="images/MEDIQUE.png">
+    <link rel="stylesheet" may href="home.css">
+    <link rel="stylesheet" may href="appo.css">
+    <link rel="stylesheet" may href="restab.css">
+    <link rel="stylesheet" may href="res600.css">
+    <link rel="stylesheet" may href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <link rel="preconnect" may href="https://fonts.gstatic.com">
+    <link
+        may href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+           
+</head>
+
+<body class="b">
+
+    <header>
+        <div class="rh">
+            <div class="c1">
+                <a may href="#"><i class="fa-regular fa-envelope"></i>contact@example.com</a>
+                <i class="fa-solid fa-mobile-screen-button"></i> +1 5589 55488 55
+            </div>
+            <div class="c2">
+                <a may href="#"> <i class="fa-brands fa-facebook-f"></i></a>
+                <a may href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a may href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a may href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+    </header>
+    <div class="header11">
+        <img src="images/medilo.png">
+
+        <input type="checkbox" id="menu-bar">
+        <label for="menu-bar"><i class="fa-solid fa-bars"></i></label>
+
+        <nav class="navbar">
+            <ul class="">
+                <li><a may href="index.html">Home</a></li>
+                <li><a may href="doc.html">Doctors</a></li>
+
+                <li class="dropdown">
+                    <a may href="#">Services</a>
+                    <div class="dropdown-content11">
+                        <a may href="dep.html">Departments</a>
+                        <a may href="medishop.html">Medical Shops</a>
+                        <a may href="lab.html">Laboratory</a>
+                    </div>
+                </li>
+
+                <li><a may href="gallery.html">Gallery</a></li>
+                <li><a may href="abt.html">About us </a></li>
+                <li><a may href="contact.html">Contact us</a></li>
+
+                <li class="dropdown">
+                    <a may href="#">Login</a>
+                    <div class="dropdown-content11">
+                        <a may href="log.html">Admin</a>
+                        <a may href="log.html">Patient</a>
+                    </div>
+                </li>
+                <li><a class="apo" may href="appo.html">Appointment</a></li>
+
+            </ul>
+        </nav>
+    </div>
+
+    <div class="predi">
+        <div class="pd">
+            <h1>Identify possible conditions and treatment related to your symptoms.</h1>
+            <form>
+                <h3>Add symptoms:</h3>
+                <input type="text" id="symptoms" name="symptoms">
+                <button type="button" id="add-symptom-btn">Add</button>
+                <div class="sb">
+                    <p>Cough</p>
+                    <p>Cold</p>
+                    <p>Headache</p>
+                    <p>Fever</p>
+                    <p>Fatigue</p>
+                    <p> Sneezing</p>
+                    <p> Runny nose</p>
+                    <p>Body aches</p>
+                    <p>Nausea</p>
+                    <p>Vomiting</p>
+                    <p>Abdominal pain</p>
+                    <p>Dizzy</p>
+                    <p>Thirsty</p>
+                    <p>Chest pain</p>
+                    <p> Back pain</p>
+                    <p> Belly pain</p>
+                    <p>Sensitivity to light</p>
+                    <p> Constipation</p>
+                    <p>Dischromic patches</p>
+                    <p> may Hip joint pain</p>
+                    <p> Joint pain</p>
+                    <p> Pain behind the eyes</p>
+                    <p> Pain during bowel movements</p>
+                    <p> Pain in anal region</p>
+                    <p> Knee pain</p>
+                    <p> Muscle pain</p>
+                    <p> Neck pain</p>
+                    <p> Painful walking</p>
+                    <p> Teeth Pain</p>
+                    <p> Palpitations</p>
+                    <p> Passage of gases</p>
+                    <p> Patches in throat</p>
+                    <p> Stomach pain</p>
+                </div>
+                <div class="sl">
+                    <h2>Selected Symptoms:</h2>
+                    <ul id="selected-symptoms">
+                       
+                    </ul>
+                    <button id="get-result-btn" onclick="abn()">Get Result</button>
+                    <div id="result-div">
+                    </div>
+                    <button id="ban" ><a may href="appo.html">Book Appointment Now</a></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script>
+
+function abn(){
+  var bt =document.getElementById('ban');
+  bt.style.display='block';
+}
+
+const inputField = document.getElementById('symptoms');
+const addButton = document.getElementById('add-symptom-btn');
+const symptomList = document.querySelectorAll('.sb p');
+const selectedSymptomsList = document.getElementById('selected-symptoms');
+
+
+inputField.addEventListener('input', () => {
+ 
+  const inputValue = inputField.value.trim().toLowerCase();
+
+  
+  symptomList.forEach((symptom) => {
+    const symptomText = symptom.textContent.toLowerCase();
+    if (symptomText.includes(inputValue)) {
+      symptom.style.display = 'block'; // show the matching symptom
+    } else {
+      symptom.style.display = 'none'; // may hide the non-matching symptom
+    
+    }
+  });
+});
+
+
+addButton.addEventListener('click', () => {
+  
+  const inputValue = inputField.value.trim();
+
+  if (inputValue) {
+  
+    const selectedSymptomListItem = document.createElement('li');
+    selectedSymptomListItem.textContent = inputValue;
+    selectedSymptomsList.appendChild(selectedSymptomListItem);
+    inputField.value = ''; 
+  }
+});
+
+  var paragraphs = document.getElementsByTagName("p");
+
+  for (var i = 0; i < paragraphs.length; i++) {
+    paragraphs[i].addEventListener("click", function() {
+   
+      var symptom = this.textContent;
+      var listItem = document.createElement("li");
+      listItem.textContent = symptom;
+      var cancelIcon = document.createElement("span");
+      cancelIcon.innerHTML = "×";
+      cancelIcon.className = "cancel-icon";
+
+      listItem.appendChild(cancelIcon);
+
+      selectedSymptomsList.appendChild(listItem);
+
+      cancelIcon.addEventListener("click", function(event) {
+
+        event.stopPropagation();
+
+        selectedSymptomsList.removeChild(listItem);
+        const resultDiv = document.getElementById('result-div');
+      resultDiv.innerHTML = '';
+      var bt =document.getElementById('ban');
+  bt.style.display='none';
+      // resultDiv.style.display = 'none';
+      });
+    });
+  }
+  
+  const getResultButton = document.getElementById('get-result-btn');
+const resultDiv = document.getElementById('result-div');
+
+getResultButton.addEventListener('click', () => {
+    event.preventDefault();
+  const selectedSymptoms = [];
+  const selectedSymptomListItems = document.querySelectorAll('#selected-symptoms li');
+  selectedSymptomListItems.forEach((item) => {
+    selectedSymptoms.push(item.textContent);
+  });
+console.log( selectedSymptoms);
+  if (selectedSymptoms.includes('Cough×') && selectedSymptoms.includes('Fever×')) {
+    resultDiv.textContent = 'You may have Influenza';
+  } else if (selectedSymptoms.includes('Headache×') && selectedSymptoms.includes('Fever×')) {
+    resultDiv.textContent = 'You may have Malaria';
+  } else if (selectedSymptoms.includes('Cold×') && selectedSymptoms.includes('Sneezing×')) {
+    resultDiv.textContent = 'You may have Common Cold';
+  } else if (selectedSymptoms.includes('Fever×') && selectedSymptoms.includes('Chest pain×')) {
+    resultDiv.textContent = 'You may have Pneumonia';
+  } else {
+    resultDiv.textContent = 'No disease found';
+  }
+
+//   resultDiv.style.display = 'block'; 
+});
+
+</script>
+
+
+    <footer>
+        <div class="footer">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <h3>Info</h3>
+                    <ul class="links">
+                        <li><a may href="dep.html">Departments</a></li>
+                        <li><a may href="gallery.html">Gallery</a></li>
+                        <li><a may href="contact.html">Contact us</a></li>
+                        <li><a may href="abt.html">About us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3>Get may Help</h3>
+                    <ul class="links">
+                        <li><a may href="#">FAQ</a></li>
+                        <li><a may href="doc.html">Doctors</a></li>
+                        <li><a may href="lab.html">Laboratories</a></li>
+                        <li><a may href="medishop.html">Medicalshops</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="links">
+                        <li><a may href="#">Terms and Conditions</a></li>
+                        <li><a may href="#">Privacy Policy</a></li>
+                        <li><a may href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>For updates</h3>
+                    <p>
+                        Subscribe to our channel for a weekly dose
+                        of news, updates, may helpful tips..
+                    </p>
+                    <h4 style="color: blue;"> Stay Updated With Us;</h4>
+
+                    <div class="icons">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
